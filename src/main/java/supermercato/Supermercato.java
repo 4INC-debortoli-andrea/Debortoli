@@ -84,25 +84,40 @@ public class Supermercato {
         return prodottiSopraLaMedia;
     }
     
-    public void addProd(Prodotto pAdd){
-        if(diml == this.prodotti.length)
-            prodotti = copia(prodotti, prodotti.length + 10);
-
-        prodotti[diml] = pAdd;
-        diml++;
+    public void addProdotto(double prezzo, double iva, double pesoInChili, double taraInChili, String descrizione, String codiceABarre, String nomeProdotto) {
+        Prodotto[] nuovoArray = new Prodotto[this.prodotti.length + 1];
+        for (int i = 0; i < this.prodotti.length; i++) {
+            nuovoArray[i] = this.prodotti[i];
+        }
+        nuovoArray[this.prodotti.length] = new Prodotto(prezzo, iva, pesoInChili, taraInChili, descrizione, codiceABarre, nomeProdotto);
+        this.prodotti = nuovoArray;
     }
 
-    public void addProd(double prezzo, double iva, double peso, double tara, String descrizione, String codiceBarre){
-        Prodotto p = new Prodotto(prezzo, iva, peso, tara, descrizione, codiceBarre);
-        addProd(p);
+    public String stampaArray() {
+        String txt = "";
+        for (int i = 0; i < this.prodotti.length; i++) {
+            txt += this.prodotti[i].getNomeProdotto() + "\n";
+        }
+        return txt;
     }
+
 
     @Override
     public String toString() {
-        return "Supermercato{" + "\n" +
+        String t = "Supermercato{" + "\n" +
                 "\tnome: \"" + nome + '\"' + "\n" +
                 "\tindirizzo: \"" + indirizzo + '\"' + "\n" +
-                "\tprodotti = " + Arrays.toString(prodotti) + "\n" +
-                '}';
+                "\tprodotti = " + "\n";
+        for (int i = 0; i < prodotti.length; i++) {
+            t +="Prodotto {" + "\n" +
+                "\tprezzo = " + prodotti[i].getPrezzo() + "\n" +
+                "\tiva = " + prodotti[i].getIva() + "\n" +
+                "\tpeso = " + prodotti[i].getPeso() + "\n" +
+                "\ttara = " + prodotti[i].getTara() + "\n" +
+                "\tdescrizione = \"" + prodotti[i].getDescrizione() + '\"' + "\n" +
+                "\tcodiceABarre = " + prodotti[i].getCodiceABarre() + "\n" +
+                "}\n";
+        }
+        return t;
     }
 }

@@ -29,14 +29,17 @@ public class Prodotto {
      * codiceABarre indica il codice a barre del prodotto
      */
     private String codiceABarre;
+    
+    private String nomeProdotto;
 
-    public Prodotto(double prezzo, double iva, double pesoInChili, double taraInChili, String codiceABarre, String descrizione) {
+    public Prodotto(double prezzo, double iva, double pesoInChili, double taraInChili, String descrizione, String codiceABarre, String nomeProdotto) {
         this.prezzo = prezzo;
         this.iva = iva;
         this.pesoInChili = pesoInChili;
         this.taraInChili = taraInChili;
-        this.codiceABarre = codiceABarre;
         this.descrizione = descrizione;
+        this.codiceABarre = codiceABarre;
+        this.nomeProdotto = nomeProdotto;
     }
 
     public double getPrezzo() {
@@ -56,6 +59,9 @@ public class Prodotto {
     }
     public String getCodiceABarre() {
         return codiceABarre;
+    }
+    public String getNomeProdotto(){
+       return nomeProdotto;
     }
 
     public double prezzoIvato() {
