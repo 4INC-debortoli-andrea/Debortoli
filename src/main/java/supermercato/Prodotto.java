@@ -41,6 +41,16 @@ public class Prodotto {
         this.codiceABarre = codiceABarre;
         this.nomeProdotto = nomeProdotto;
     }
+    
+    public Prodotto(Prodotto p){
+        this.prezzo = p.prezzo;
+        this.iva = p.iva;
+        this.pesoInChili = p.pesoInChili;
+        this.taraInChili = p.taraInChili;
+        this.descrizione = p.descrizione;
+        this.codiceABarre = p.codiceABarre;
+        this.nomeProdotto = p.nomeProdotto;
+    }
 
     public double getPrezzo() {
         return prezzo;

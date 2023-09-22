@@ -13,11 +13,13 @@ public class Supermercato {
      * prodotti è un'array della classe Prodotto
      */
     private Prodotto[] prodotti;
+    private int diml;
 
     public Supermercato(String nome, String indirizzo, Prodotto[] prodotti) {
         this.nome = nome;
         this.indirizzo = indirizzo;
         this.prodotti = prodotti;
+        diml = 0;
     }
 
     /**
@@ -83,7 +85,7 @@ public class Supermercato {
 
         return prodottiSopraLaMedia;
     }
-    
+    /*
     public void addProdotto(double prezzo, double iva, double pesoInChili, double taraInChili, String descrizione, String codiceABarre, String nomeProdotto) {
         Prodotto[] nuovoArray = new Prodotto[this.prodotti.length + 1];
         for (int i = 0; i < this.prodotti.length; i++) {
@@ -91,6 +93,11 @@ public class Supermercato {
         }
         nuovoArray[this.prodotti.length] = new Prodotto(prezzo, iva, pesoInChili, taraInChili, descrizione, codiceABarre, nomeProdotto);
         this.prodotti = nuovoArray;
+    }
+    */
+    public void addProd(Prodotto pAdd){
+        if(diml >= this.prodotti.length)
+            prodotti = resize((prodotti.length))
     }
 
     public String stampaArray() {
