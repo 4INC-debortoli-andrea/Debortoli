@@ -2,72 +2,72 @@ package ristorante;
 
 /**
  *
- * @author Andrea
+ * @author andrea.debortoli
  */
-public class Ristorante {
+public class Sala {
     private int capienza;
-    private int nSale;
-    private Sala[] sale;
+    private int nTavoli;
+    private Tavolo[] tavoli;
     
-    public Ristorante(Sala[] s){
-        this.sale = s;
-        this.nSale = sale.length;
-        capienza = nSale;
+    public Sala(Tavolo[] t){
+        this.tavoli = t;
+        this.nTavoli = tavoli.length;
+        capienza = nTavoli;
     }
     
     private int cercaTavolo(int n){
         int i = 0;
-        while(i < nSale && sale[i].getNumeroTavolo() != n)
+        while(i < nTavoli && tavoli[i].getNumeroTavolo() != n)
             i++;
         return i;
     }
     
     private void shiftSx(int indice){
-        for(int i = indice; i < nSale; i++)
-            sale[i - 1] = sale[i];
+        for(int i = indice; i < nTavoli; i++)
+            tavoli[i - 1] = tavoli[i];
     }
     
     public int nPosti(){
         int risposta = 0;
-        for(int i = 0; i < nSale; i++)
-            risposta += sale[i].getCapienza();
+        for(int i = 0; i < nTavoli; i++)
+            risposta += tavoli[i].getCapienza();
         return risposta;
     }
     
     public int nPersoneSedute(){
         int risposta = 0;
-        for(int i = 0; i < nSale; i++)
-            risposta += sale[i].getNumeroPersone();
+        for(int i = 0; i < nTavoli; i++)
+            risposta += tavoli[i].getNumeroPersone();
         return risposta;
     }
     
     public boolean siediti(int numTav){
-        return sale[cercaTavolo(numTav)].siedi();
+        return tavoli[cercaTavolo(numTav)].siedi();
     }
     
     public boolean alzati(int numTav){
-        return sale[cercaTavolo(numTav)].alzati();
+        return tavoli[cercaTavolo(numTav)].alzati();
     }
     
     public boolean prenota(int p){
         boolean risposta = false;
         int i = 0;
-        while(i < nSale && !sale[i].prenota(p))
+        while(i < nTavoli && !tavoli[i].prenota(p))
             i++;
-        if(i < nSale)
+        if(i < nTavoli)
             risposta = true;
         return risposta;
     }
     
     public boolean disdici(int n){
-        return sale[cercaTavolo(n)].disdici();
+        return tavoli[cercaTavolo(n)].disdici();
     }
     
     public boolean aggiungiTavolo(Tavolo t){
         boolean risposta = false;
-        if(nSale < capienza){
-            sale[nSale] = new Tavolo(t);
-            nSale++;
+        if(nTavoli < capienza){
+            tavoli[nTavoli] = new Tavolo(t);
+            nTavoli++;
             risposta = true;
         }
         return risposta;
@@ -76,5 +76,5 @@ public class Ristorante {
     public void rimuoviTavolo(int n){
         shiftSx(cercaTavolo(n));
     }
-    
 }
+
