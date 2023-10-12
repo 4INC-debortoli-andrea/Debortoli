@@ -5,85 +5,80 @@ package ristorante;
  * @author Andrea
  */
 public class Tavolo {
+    
     private int capienza;
-    private int numeroPersone;
-    private int numeroTavolo;
+    private int numPers;
+    private int numTav;
     private boolean prenotato;
-    
-    
-    public Tavolo(int capienza, int numeroPersone, int numeroTavolo, boolean prenotato){
+
+    public Tavolo(int capienza, int numPers, int numTav, boolean prenotato) {
         this.capienza = capienza;
-        this.numeroPersone = numeroPersone;
-        this.numeroTavolo = numeroTavolo;
+        this.numPers = numPers;
+        this.numTav = numTav;
         this.prenotato = prenotato;
     }
     
+    
     public Tavolo(Tavolo t){
         this.capienza = t.capienza;
-        this.numeroPersone = t.numeroPersone;
-        this.numeroTavolo = t.numeroTavolo;
+        this.numPers = t.numPers;
+        this.numTav = t.numTav;
         this.prenotato = t.prenotato;
+    }
+    
+    public boolean siediti(){
+        boolean ris = false;
+        if(numPers < capienza){
+            numPers++;
+            ris = true;
+        }
+        return ris;
+    }
+    
+    public boolean alzati(){
+        boolean ris = false;
+        if(numPers > 0){
+            numPers--;
+            ris = true;
+        }
+        return ris;
+    }
+    
+    public boolean prenota(int numPers){
+        boolean ris = false;
+        if(!prenotato && numPers <= capienza){
+            prenotato = true;
+            ris = true;
+        }
+        return ris;
+    }
+    
+    public boolean disdici(){
+        if(prenotato)
+            prenotato = false;
+        return prenotato;
+    }
+
+    public int getNumPers() {
+        return numPers;
     }
 
     public int getCapienza() {
         return capienza;
     }
-    public int getNumeroPersone() {
-        return numeroPersone;
+
+    public int getNumTav() {
+        return numTav;
     }
-    public int getNumeroTavolo() {
-        return numeroTavolo;
-    }
+    
+    
+
     public boolean isPrenotato() {
         return prenotato;
     }
+
     
     
-    public boolean alzati(){
-        boolean risposta = false;
-        if(numeroPersone > 0){
-            numeroPersone--;
-            risposta = true;
-        }
-        return risposta;
-    }
     
-    public boolean siedi(){
-        boolean risposta = false;
-        if(numeroPersone < capienza){
-            numeroPersone++;
-            risposta = true;
-        }
-        return risposta;
-    }
-    
-    public boolean prenota(int n){
-        boolean risposta = false;
-        if(prenotato != true && n <= capienza){
-            prenotato = true;
-            risposta = true;
-        }
-        return risposta;
-    }
-    
-    public boolean disdici(){
-        boolean risposta = false;
-        if(prenotato = true){
-            prenotato = false;
-            risposta = true;
-        }    
-        return prenotato;
-    }
-    
-    
-    @Override
-    public String toString() {
-        return "Tavolo{" + "\n" +
-                "\tcapienza=" + capienza + "\n" +
-                "\tnumPers=" + numeroPersone + "\n" +
-                "\tnumTav=" + numeroTavolo + "\n" +
-                "\tprenotato=" + prenotato + "\n" +
-                '}';
-    }
     
 }

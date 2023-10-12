@@ -19,7 +19,7 @@ public class Main {
         for(int i = 0; i < t.length; i++)
             t[i] = new Tavolo(capienza[i], numPers[i], numTav[i], prenotato[i]);
         
-        Ristorante r = new Ristorante(t);
+        /*Ristorante r = new Ristorante(t);
         
         System.out.println("Siediti: " + r.siediti(3));
         System.out.println("Alzati: " + r.alzati(2));
@@ -31,6 +31,7 @@ public class Main {
         Tavolo t1 = new Tavolo(1,1,7,true);
         r.addTav(t1);
         r.remTav(3);
+        */
     }
     
 }
