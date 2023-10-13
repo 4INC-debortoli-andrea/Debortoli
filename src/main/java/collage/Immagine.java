@@ -18,17 +18,17 @@ public class Immagine {
     public int getAltezza() {
         return altezza;
     }
-    public void setAltezza(int altezza) {
-        this.altezza = altezza;
-    }
     public int getBase() {
         return base;
     }
-    public void setBase(int base) {
-        this.base = base;
-    }
     public boolean isColore() {
         return colore;
+    }
+    public void setAltezza(int altezza) {
+        this.altezza = altezza;
+    }
+    public void setBase(int base) {
+        this.base = base;
     }
     public void setColore(boolean colore) {
         this.colore = colore;
@@ -40,33 +40,35 @@ public class Immagine {
 
     public String confrontaDimensioni(Immagine nuova){
         String t = "";
-        int dim1 = base*altezza;
-        int dim2 = nuova.getBase()*nuova.getAltezza();
-        if(dim1 > dim2){
+        int dimensione1 = base*altezza;
+        int dimensione2 = nuova.getBase() * nuova.getAltezza();
+        if(dimensione1 > dimensione2){
             t = "L'immagine è più grande";
-        }else if(dim1 == dim2){
+        }else if(dimensione1 == dimensione2){
             t = "Le due immagini sono uguali";
         }else{
-            t = "L'immagine è più piccola";
+            t = "L'immagine nuova è più grande";
         }
         return t;
     }
 
-    public String ridimensiona(int nBase, int nAltezza){
-        base = nBase;
-        altezza = nAltezza;
+    public String ridimensiona(int nuovaBase, int nuovaAltezza){
+        base = nuovaBase;
+        altezza = nuovaAltezza;
         return "Immagine ridimensionata";
     }
 
-    public String cambiaColore(boolean aColore){
-        colore = aColore;
-        return "Colore cambiato";
+    public String cambiaColore(boolean nuovoColore){
+        colore = nuovoColore;
+        return "Colore aggiornato";
     }
 
     public String stampa(){
-        String t = "";
-        t = "base: " + base + "\naltezza: " + altezza + "\ncolorata: " + colore + "\n";
-        return t;
+        return "Immagine {"
+                + "\n\tbase: " + base
+                + "\n\taltezza: " + altezza
+                + "\n\tcolore: " + colore
+                + "\n}";
     } 
 
 }

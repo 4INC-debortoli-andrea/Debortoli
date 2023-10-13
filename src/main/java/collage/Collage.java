@@ -72,11 +72,10 @@ public class Collage {
     }
     
     public String stampa(){
-        String t = "";
-        for (int i = 0; i < dimL; i++) {
-            t += "\n---Immagine " + (i + 1) + "---\n" + immagini[i].stampa();
-        }
-
+        String t = "\n------IMMAGINI------\n";
+        for (int i = 0; i < dimL; i++) 
+            t += "\n" + immagini[i].stampa();
+        
         return t;
     }
 }
