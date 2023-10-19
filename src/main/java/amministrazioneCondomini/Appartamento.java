@@ -15,7 +15,7 @@ public class Appartamento {
         this.numeroApp = numeroApp;
     }
     
-    public Appartamento (Appartamento a){
+    public Appartamento(Appartamento a){
         this.nominativoProprietario = a.nominativoProprietario;
         this.millesimi = a.millesimi;
         this.numeroApp = a.numeroApp;
@@ -29,15 +29,6 @@ public class Appartamento {
     }
     public int getNumeroApp() {
         return numeroApp;
-    }
-    public void setNominativoProprietario(String nominativoProprietario) {
-        this.nominativoProprietario = nominativoProprietario;
-    }
-    public void setMillesimi(double millesimi) {
-        this.millesimi = millesimi;
-    }
-    public void setNumeroApp(int numeroApp) {
-        this.numeroApp = numeroApp;
     }
 
     @Override
