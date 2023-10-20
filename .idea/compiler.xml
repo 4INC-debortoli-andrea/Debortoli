@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="debortoli" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Debortoli" target="1.8" />
+      <module name="debortoli" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
