@@ -39,8 +39,8 @@ public class Immagine {
     }
 
     public String confrontaDimensioni(Immagine nuova){
-        String t = "";
-        int dimensione1 = base*altezza;
+        String t = " ";
+        int dimensione1 = base * altezza;
         int dimensione2 = nuova.getBase() * nuova.getAltezza();
         if(dimensione1 > dimensione2){
             t = "L'immagine è più grande";
