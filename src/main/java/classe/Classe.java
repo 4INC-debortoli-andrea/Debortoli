@@ -53,7 +53,7 @@ public class Classe {
     }
 
     private char primaLettera() {
-        return this.nome.charAt(0);
+        return studenti[1].getNome.charAt(0);
     }
 
     public void invertiAttributiTest() throws Exception {
