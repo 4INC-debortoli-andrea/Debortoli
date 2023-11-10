@@ -33,28 +33,20 @@ public class Classe {
     }
 
     public void ordinaStudenti() {
-
-        Studente[] ordina = new Studente[this.studenti.length];
-
-        char[] lettere = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-
-        int c = 0;
-        for (int i = 0; i < lettere.length; i++) {
-            for (int j = 0; j < this.studenti.length; j++) {
-                if (this.studenti[j].primaLettera() == lettere[i]) {
-                    ordina[c] = this.studenti[j];
-                    c++;
+        
+        Studente temp;
+        
+        for(int i=0; i<studenti.length-1; i++){
+            for(int j=i+1; j<studenti.length; j++){
+                if(studenti[i].getNome().charAt(0) > studenti[j].getNome().charAt(0)){
+                    temp = studenti[i];
+                    studenti[i] = studenti[j];
+                    studenti[j] = temp;
                 }
             }
         }
-
-        this.studenti = ordina;
-
     }
 
-    private char primaLettera() {
-        return studenti[1].getNome.charAt(0);
-    }
 
     public void invertiAttributiTest() throws Exception {
 

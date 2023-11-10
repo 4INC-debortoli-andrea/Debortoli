@@ -22,7 +22,7 @@ public class Orologio {
     }
 
     public void setOra(int ora) throws Exception {
-        if (ora > 24  || ora < 0) {
+        if (ora > 23  || ora < 0) {
             throw new Exception("ora sbagliata");
         } else {
             this.ora = ora;

@@ -12,7 +12,7 @@ public class OrologioCucu extends Orologio {
         String cucu = " CuCu!";
         String txt = super.getOra()+" : "+super.getMinuti()+" : "+super.getSecondi();
 
-        if (super.getOra() == 12) {
+        if (super.getOra() == 12 || super.getOra() == 0) {
             txt += cucu;
         }
 

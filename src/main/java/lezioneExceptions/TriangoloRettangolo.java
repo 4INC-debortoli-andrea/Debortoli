@@ -16,7 +16,7 @@ public class TriangoloRettangolo {
         setAltezza(altezza);
         setLato(lato);
         setColore(colore);
-        setId(id);
+        //setId(id);
     }
    
     public final void setBase(Double base) throws Exception {
@@ -73,7 +73,7 @@ public class TriangoloRettangolo {
         }                 
     }
     
-    public void setId(String id) throws Exception{
+/*    public void setId(String id) throws Exception{
         String num = "";
         String chara = "";
         try {
@@ -88,7 +88,7 @@ public class TriangoloRettangolo {
         } catch (NullPointerException e){
                 throw new NullPointerException ("Id Vuoto");
         }
-    }
+    }*/
 
     
     

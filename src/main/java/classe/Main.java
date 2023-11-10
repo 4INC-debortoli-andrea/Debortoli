@@ -10,8 +10,8 @@ public class Main {
 
         try {
             Studente capoClasse = new Studente("Giacomo Antonio", "Calò");
-            Studente s1 = new Studente("Riccardo", "Devescovi");
-            Studente s2 = new Studente("Luca", "Giacomoni");
+            Studente s1 = new Studente("Luca", "Giacomoni");
+            Studente s2 = new Studente("Riccardo", "Devescovi");
             Studente[] s = {s1, s2};
             Classe c = new Classe(capoClasse, s);
             System.out.println(c.toString());
