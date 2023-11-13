@@ -50,12 +50,11 @@ public class Orologio {
     }
     
     public void aggiungiOre(int n) {
-
         ora += n;
-        while (ora >= 24) {
+        
+        while (ora >= 24) 
             ora -= 24;
-        }
-
+        
     }
 
 
