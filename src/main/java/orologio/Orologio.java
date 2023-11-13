@@ -48,7 +48,15 @@ public class Orologio {
     public int getSecondi() {
         return secondi;
     }
+    
+    public void aggiungiOre(int n) {
 
+        ora += n;
+        while (ora >= 24) {
+            ora -= 24;
+        }
+
+    }
 
 
     public String stampa() {

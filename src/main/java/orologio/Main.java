@@ -4,13 +4,30 @@ public class Main {
     public static void main(String[] args) {
         
       try {
-              OrologioDigitale l = new OrologioDigitale(15, 2, 17);
-              l.suDodiciOre(false);
-              System.out.println(l.stampa());
-              OrologioCucu o = new OrologioCucu(0, 0, 0);
-              System.out.println(o.stampa());
-          } catch (Exception e) {
-              System.err.println(e.getMessage());
+            Orologio o = new Orologio(13, 17, 14);
+            OrologioDigitale d = new OrologioDigitale(15, 33, 9);
+            OrologioCucu c = new OrologioCucu(12, 0, 0);
+
+            Orologio[] arrayOrologi = {o, d, c};
+            
+            
+            d.suDodiciOre(true);
+
+            for (Orologio orologio : arrayOrologi) 
+                System.out.println("Orologio: " + orologio.stampa());
+
+            o.aggiungiOre(2);
+            d.aggiungiOre(7);
+            c.aggiungiOre(12);
+            
+            System.out.println("\n");
+
+            for (Orologio orologio : arrayOrologi) 
+                System.out.println("Orologio dopo: " + orologio.stampa());
+            
+            } 
+            catch (Exception e) {
+                System.err.println(e.getMessage());
             }          
     }
 }
