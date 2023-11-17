@@ -6,9 +6,11 @@ public class Main {
       try {
             Orologio o = new Orologio(13, 17, 14);
             OrologioDigitale d = new OrologioDigitale(15, 33, 9);
-            OrologioCucu c = new OrologioCucu(12, 0, 0);
+            OrologioCucu c = new OrologioCucu(0, 0, 0);
 
-            Orologio[] arrayOrologi = {o, d, c};
+            Orologio[] arrayOrologi = {new Orologio(13, 17, 14),
+                new OrologioDigitale(15, 33, 9), 
+                new OrologioCucu(0, 0, 0)};
             
             
             d.suDodiciOre(true);
