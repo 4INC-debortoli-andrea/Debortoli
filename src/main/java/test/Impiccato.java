@@ -8,7 +8,7 @@ package test;
 import java.util.Scanner;
 public class Impiccato {
 
-    private String parola = "portafoglio";
+    private String parola = "buonarroti";
     private StringBuilder censura;
     private int contatore;
     private boolean giocoFinito;
