@@ -4,7 +4,7 @@ package listaProdotti;
  *
  * @author andrea.debortoli
  */
-
+/*
 import prodotto.Prodotto;
 import data.DataCompleta;
 public class Alimentari extends Prodotto{
@@ -29,3 +29,4 @@ public class Alimentari extends Prodotto{
     }
 }
 
+*/

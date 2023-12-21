@@ -1,122 +1,136 @@
 package persona;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
-
+import data.Data;
 public class Persona {
+
     private String cognome;
     private String nome;
-    private String codFisc;
-    private String dataDiNascita;
-    private static int numeroIstanze;
+    private Data dataDiNascita;
+    protected static int numeroIstanze;
 
-    public Persona(String cognome, String nome, String codFisc, String dataDiNascita) throws Exception {
-        setCognome(cognome);
-        setNome(nome);
-        setCodFisc(codFisc);
-        this.dataDiNascita = dataDiNascita;
-        addIstanza();
-    }
-
-    private void addIstanza() {
+    public Persona() {
+        cognome = null;
+        nome = null;
+        dataDiNascita = null;
         numeroIstanze++;
     }
 
-    public void setNome(String nome) throws Exception {
-        if (nome.isEmpty()) {
-            throw new Exception("Il nome non può essere vuoto.");
-        }
-        for(int i = 1; i < nome.length(); i++) {
-            if(Character.isUpperCase(nome.charAt(i))){
-                i = nome.length();
-                throw new Exception("Non possono esserci maiuscole oltre all'iniziale");
-            }
-        }
-        if (Character.isUpperCase(nome.charAt(0))) {
-            this.nome = nome;
-        } else {
-            throw new Exception("Il nome deve iniziare con una lettera maiuscola.");
+    public Persona(String cognome, String nome, Data dataDiNascita) throws Exception {
+        try {
+            setCognome(cognome);
+            setNome(nome);
+            setDataDiNascita(dataDiNascita);
+            numeroIstanze++;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
         
     }
 
-    public void setCognome(String cognome) throws Exception {
-        if (cognome.isEmpty()) {
-            throw new Exception("Il cognome non può essere vuoto.");
-        }
-        for(int i = 1; i < cognome.length(); i++) {
-            if(Character.isUpperCase(nome.charAt(i))){
-                i = cognome.length();
-                throw new Exception("Non possono esserci maiuscole oltre all'iniziale");
-            }
-        }
-        if (Character.isUpperCase(nome.charAt(0))) {
-            this.cognome = cognome;
-        } else {
-            throw new Exception("Il cognome deve iniziare con una lettera maiuscola.");
-        }
+    public final String getCognome() {
+        return cognome;
     }
 
-    public void setCodFisc(String codFisc) throws Exception {
-        if (codFisc.length() != 16) {
-            throw new Exception("Codice fiscale troppo corto");
-        }
-
-        codFisc = codFisc.toUpperCase();
-
-        for (int i = 0; i < 6; i++) {
-            if (!Character.isLetter(codFisc.charAt(i))) {
-                throw new Exception("Numeri all'inizio");
-            }
-        }
-
-        for (int i = 6; i < 8; i++) {
-            if (!Character.isDigit(codFisc.charAt(i))) {
-                throw new Exception("Lettere in centro");
-            }
-        }
-
-        if (!Character.isLetter(codFisc.charAt(8))) {
-            throw new Exception("Nona lettera errata");
-        }
-
-        for (int i = 9; i < 11; i++) {
-            if (!Character.isDigit(codFisc.charAt(i))) {
-                throw new Exception("Ultime cifre sbagliate");
-            }
-        }
-
-        this.codFisc = codFisc;
+    public final Data getDataDiNascita() {
+        return new Data(dataDiNascita);
     }
 
-    
-    
-    
-    public boolean verificaOmonimia(Persona p) {
-        boolean risultato = false;
-        if (p.nome.equals(this.nome) && p.cognome.equals(this.cognome)) {
-            risultato = true;
-        }
-
-        return risultato;
+    public final  String getNome() {
+        return nome;
     }
 
-    public int calcolaEta() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate dataOdierna = LocalDate.now();
-        LocalDate dataNascita = LocalDate.parse(dataDiNascita, formatter);
-        return Period.between(dataNascita, dataOdierna).getYears();
-    }
-
-    public static int getNumeroIstanze() {
+    public static final int getNumeroIstanze() {
         return numeroIstanze;
     }
 
-
-    @Override
-    public String toString() {
-        return "Persona [cognome = " + cognome + ", nome = " + nome + ", codFisc = " + codFisc + ", dataDiNascita = "
-                + dataDiNascita + "]";
+    public final void setCognome(String cognome) throws Exception {
+        if (cognome.isEmpty()) {
+            throw new Exception("Il cognome non può essere vuoto");
+        } else if (!Character.isUpperCase(cognome.charAt(0))) {
+            throw new Exception("Il cognome deve cominciare con una lettera maiuscola");
+        } else {
+            try {
+                controlloNominativi(cognome);
+            } catch (Exception e) {
+                throw new Exception(e.getMessage());
+            }
+            this.cognome = cognome;
+        }
     }
+
+    public final void setNome(String nome) throws Exception {
+        if (nome.isEmpty()) {
+            throw new Exception("Il nome non può essere vuoto");
+        } else if (!Character.isUpperCase(nome.charAt(0))) {
+            throw new Exception("Il nome deve cominciare con una lettera maiuscola");
+        } else {
+            try {
+                controlloNominativi(nome);
+            } catch (Exception e) {
+                throw new Exception(e.getMessage());
+            }
+            this.nome = nome;
+        }
+    }
+
+    public final void setDataDiNascita(Data dataDiNascita) throws Exception {
+        try {
+            if (Data.differenzaInGiorni(dataDiNascita, new Data()) < 0) {
+                throw new Exception("La data di nascita non può essere successiva alla data attuale");
+            } else {
+                this.dataDiNascita = new Data(dataDiNascita);
+            }
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+
+    }
+
+    private void controlloNominativi(String nominativo) throws Exception {
+        if (!Character.isUpperCase(nominativo.charAt(0))) {
+            throw new Exception("Il nominativo deve cominciare con una lettera maiuscola");
+        }
+        for (int i = 1; i < nominativo.length(); i++) {
+            if (!Character.isLetter(nominativo.charAt(i)) || Character.isUpperCase(nominativo.charAt(i))) {
+                throw new Exception("Il nominativo non può contenere caratteri speciali o lettere maiuscole");
+            }
+        }
+    }
+
+    public Boolean verificaOmonimia(Persona persona) throws Exception {
+
+        if (persona == null) {
+            throw new Exception("Il parametro non può essere null");
+        } else if (this.cognome == null || this.nome == null || persona.nome == null || persona.cognome == null) {
+            throw new Exception("Uno o più dati sono nulli");
+        } else {
+            Boolean risultato = false;
+            if (this.cognome.equals(persona.cognome) && this.nome.equals(persona.nome)) {
+                risultato = true;
+            }
+            return risultato;
+        }
+    }
+
+    public Integer calcolaEtà() throws Exception {
+        try {
+            return Data.differenzaInAnni(dataDiNascita, new Data());
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    public String info() throws Exception {
+        if (cognome == null || nome == null || dataDiNascita == null) {
+            throw new Exception("Gli attributi non possono essere null");
+        } else {
+            String t = "";
+            t += "Cognome: " + cognome + "\n";
+            t += "Nome: " + nome + "\n";
+            t += "Data di nascita: " + dataDiNascita.toString() + "\n";
+            return t;
+        }
+
+    }
+
 }
