@@ -8,80 +8,63 @@ public class Classe {
     private Studente capoClasse;
     private Studente[] studenti;
 
-    public Classe(Studente capoClasse, Studente[] studenti) throws Exception {
-        this.studenti = new Studente[studenti.length];
-        for (int i = 0; i < studenti.length; i++) {
-            this.studenti[i] = new Studente(studenti[i]);
-        }
-        this.capoClasse = setCapoClasse(capoClasse);
+    public Classe(Studente capoClasse, Studente[] studenti){
+        this.studenti = studenti.clone();
+        setCapoClasse(capoClasse);
     }
-
-    public Studente getCapoClasse() {
-        return capoClasse;
-    }
-
-     public final Studente setCapoClasse(Studente capoClasse) throws Exception {
-        try {
-            if (capoClasse == null) {
-                throw new Exception("Il capo classe non e' presente nella classe");
+    
+    public boolean controllaOmonimia(Studente s) {
+        for (Studente st : studenti) {
+            if (st.equals(s)) {
+                return true;
             }
-
-        } catch (Exception e) {
-            throw e;
         }
-        return capoClasse;
+        return false;
+    }
+    
+    public int hashCode(int pos) {
+        return studenti[pos].hashCode();
     }
 
+    public void setCapoClasse(Studente capoClasse) {
+        this.capoClasse = capoClasse;
+    }
+
+    public void inveriAtt() throws Exception{
+        String cognome = capoClasse.getNome();
+        String nome = capoClasse.getCognome();
+        capoClasse.setCognome(cognome);
+        capoClasse.setNome(nome);
+
+        /*for (int i = 0; i < studenti.length; i++) {
+            cognome = studenti[i].getNome();
+            nome = studenti[i].getCognome();
+            studenti[i].setCognome(cognome);
+            studenti[i].setNome(nome);
+        }*/
+
+    }
+    
     public void ordinaStudenti() {
-        
-        Studente temp;
-        
-        for(int i=0; i<studenti.length-1; i++){
-            for(int j=i+1; j<studenti.length; j++){
-                if(studenti[i].getNome().charAt(0) > studenti[j].getNome().charAt(0)){
-                    temp = studenti[i];
-                    studenti[i] = studenti[j];
-                    studenti[j] = temp;
+        int n = studenti.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (studenti[j].getCognome().compareTo(studenti[j + 1].getCognome()) > 0) {
+                    Studente temp = studenti[j];
+                    studenti[j] = studenti[j + 1];
+                    studenti[j + 1] = temp;
                 }
             }
         }
     }
-
-
-    public void invertiAttributiTest() throws Exception {
-
-        String nome = this.capoClasse.getNome();
-        String cognome = this.capoClasse.getCognome();
-
-        this.capoClasse.setCognome(nome);
-        this.capoClasse.setNome(cognome);
-
-        for (int i = 0; i < studenti.length; i++) {
-            String nomeStud = this.studenti[i].getNome();
-            String cognomeStud = this.studenti[i].getCognome();
-
-            this.studenti[i].setCognome(nomeStud);
-            this.studenti[i].setNome(cognomeStud);
-        }
-    }
-
-
-
+    
+    
     @Override
     public String toString() {
-        String t = "Classe{" + "\n" +
-                "\tCapoclasse: " + capoClasse + "\n" +
-                "\tStudenti: ";
-        
-        for(int i = 0; i < studenti.length; i++){
-            t += "\n\n" + studenti[i].toString();
+        String r = "nome capo Classe: " + capoClasse + "\n";
+        for (int i = 0; i < studenti.length; i++) {
+            r += "studenti[" + i + "]:" + studenti[i].toString() + "\n";
         }
-        
-        t += "\n\n}";
-        
-        return t;
+        return r;
     }
-
-
-    
 }

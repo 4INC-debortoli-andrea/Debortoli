@@ -5,67 +5,95 @@ package classe;
  * @author andrea.debortoli
  */
 public class Studente {
-    private String cognome;
     private String nome;
-
-    public Studente(String nome, String cognome) throws Exception {
+    private String cognome;
+    
+    public Studente(String nome , String cognome)throws Exception{
         setNome(nome);
         setCognome(cognome);
     }
+    
+    public Studente(Studente studente){
+        nome = studente.nome;
+        cognome = studente.cognome;
+    }
+    
+    public final void setNome(String nome)throws Exception{
+        this.nome = ctrNome(nome);
+    }
 
-    public Studente(Studente s) {
-        this.nome = s.nome;
-        this.cognome = s.cognome;
+    public final void setCognome(String cognome) throws Exception{
+        this.cognome = ctrNome(cognome);
+    }
+    
+    private String ctrNome(String nome)throws Exception{
+        nome = nome.trim();
+        try{
+            if(nome.isEmpty()){
+                throw new Exception("inserire un nome");
+            }else{
+                for(int i=0 ; i<nome.length() ; i++){
+                    if(!(Character.isLetter(nome.charAt(i))
+                            ||Character.isSpaceChar(nome.charAt(i))
+                                ||nome.charAt(i)== '\''
+                                ) ){
+                        throw new Exception("il nome deve contenere solo lettere");
+                    }
+                }
+            }
+        }catch(Exception e){
+            throw e;
+        }
+        return nome;
     }
 
     public String getNome() {
         return nome;
     }
+
     public String getCognome() {
         return cognome;
     }
 
-    public final void setNome(String nome) throws Exception {
-        this.nome = controllo(nome, "nome");
-    }
-    public final void setCognome(String cognome) throws Exception {
-        this.cognome = controllo(cognome, "cognome");
+    @Override
+    public String toString() {
+        return "nome:"+nome+"  cognome:"+cognome;
     }
 
-    private String controllo(String p, String nome) throws Exception {
-        try {
-            if (p == (null)) {
-                throw new Exception("La stringa non può essere null!");
-            }
-            if (!p.isEmpty()) {
-                if (Character.isUpperCase(p.charAt(0))) {
-                    for (int i = 1; i < p.length(); i++) {
-                        char c = p.charAt(i - 1);
-                        if (Character.isUpperCase(p.charAt(i)) == false && c == ' ') {
-                            throw new Exception("La prima lettera del secondo " + nome + " dev'essere maiuscola");
-                        }
-                        if (!Character.isLetter(c) && p.charAt(i) == 32) {
-                            throw new Exception("Nel " + nome + " devono esserci solamente lettere");
-                        }
-                    }
-                } else {
-                    throw new Exception("La prima lettera dev'esere maiuscola!");
-                }
-            } else {
-                throw new Exception("La stringa non può essere vuota!");
-            }
-        } catch (NumberFormatException e) {
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + nome.hashCode();
+        hash = 83 * hash + cognome.hashCode();
+        return hash;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
         }
-        return p;
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Studente other = (Studente) obj;
+        if (!this.nome.equals(other.nome)) {
+            return false;
+        }
+        return this.cognome.equals(other.cognome);
     }
 
     
     @Override
-    public String toString(){
-    return "Studente{ " + "\n" +
-            "\tcognome: " + cognome + "\n" +
-            "\tnome: " + nome + "\n" +
-            "}"; 
+    protected void finalize() throws Throwable {
+        super.finalize(); 
     }
+
+    @Override
+    protected Studente clone() throws CloneNotSupportedException {
+        return (Studente) super.clone();
+    }   
 }
