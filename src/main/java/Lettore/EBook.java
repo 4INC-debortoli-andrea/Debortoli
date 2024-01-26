@@ -22,9 +22,9 @@ public class EBook implements Lettore{
     
     @Override
     public String leggiTesto(){
-        return "Il nome del libro: " + nomeLibro + "\n" +
+        return "Il nome del libro è: " + nomeLibro + "\n" +
                "Le pagine totali sono: " + nPagine + "\n" +
-               getTesto(); 
+               "\"" + getTesto() + "\""; 
     }
 
     @Override

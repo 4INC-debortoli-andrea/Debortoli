@@ -24,7 +24,7 @@ public class PostaElettronica implements Lettore {
     public String leggiTesto(){
         return "Il mittente è: " + mittente + "\n" +
                "L'oggetto è: " + oggetto + "\n" +
-               getTesto();
+               "\"" + getTesto() + "\"";
     }
 
     @Override

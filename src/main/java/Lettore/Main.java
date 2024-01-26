@@ -10,7 +10,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Whatsapp wA = new Whatsapp("Masch ♂");
+        Whatsapp wA = new Whatsapp("Maschio ♂");
         EBook eB = new EBook ("Molto leggera ma pesante", "L'insostenibile leggerezza dell'essere", 318);
         PostaElettronica pA = new PostaElettronica ("Salve", "Andrea", "Saluti");
         System.out.println(wA.leggiTesto());

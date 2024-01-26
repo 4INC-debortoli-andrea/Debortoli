@@ -7,6 +7,4 @@ package Lettore;
 public interface Lettore {
     public String leggiTesto();
     public String getTesto();
-    @Override
-    public String toString();
 }

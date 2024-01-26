@@ -20,8 +20,8 @@ class Esempio implements Comparable<Esempio> {
 
     // Sovrascrittura del metodo compareTo per definire l'ordine
     @Override
-    public int compareTo(Esempio other) {
+    public int compareTo(Esempio altro) {
         // Ordine crescente in base al valore
-        return Integer.compare(this.valore, other.valore);
+        return Integer.compare(this.valore, altro.valore);
     }
 }
