@@ -1,11 +1,11 @@
-spackage verifica;
+//spackage verifica;
 
 /**
  *
  * @author andrea.debortoli
  */
 import verifica512.Data;
-public class Pubblico extends HasNormativa {
+/*public class Pubblico extends HasNormativa {
     private int numeroGriglie;
 
     public Pubblico(int numeroGriglie, boolean normativaIncendio, String nome, Impianto impianto, Data controlloAnnuale, Data controlloFumi, boolean hasCapotto) {
@@ -13,3 +13,4 @@ public class Pubblico extends HasNormativa {
         this.numeroGriglie = numeroGriglie;
     }
 }
+*/
