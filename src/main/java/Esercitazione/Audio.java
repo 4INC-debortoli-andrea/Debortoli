@@ -4,7 +4,7 @@ package Esercitazione;
  *
  * @author andry
  */
-public class Audio extends DatoMultimediale implements IsRiproducibile {
+public class Audio extends DatoMultimediale {
 
     private int volume;
     private int durata;
@@ -15,31 +15,26 @@ public class Audio extends DatoMultimediale implements IsRiproducibile {
         this.durata = durata;
     }
 
-    @Override
     public int getVolume() {
         return volume;
     }
 
-    @Override
     public int getDurata() {
         return durata;
     }
 
-    @Override
     public void alza(int n) {
         if ((volume + n) <= 10) {
             volume += n;
         }
     }
 
-    @Override
     public void abbassa(int n) {
         if ((volume - n) >= 0) {
             volume -= n;
         }
     }
 
-    @Override
     public String play() {
         String t = "";
         for (int i = 0; i < durata; i++) {
@@ -52,7 +47,6 @@ public class Audio extends DatoMultimediale implements IsRiproducibile {
         return t;
     }
 
-    @Override
     public String toString() {
         return super.toString() + "\nvolume = " + volume + "\ndurata = " + durata;
     }

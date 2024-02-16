@@ -4,37 +4,32 @@ package Esercitazione;
  *
  * @author andry
  */
-public class Filmato extends DatoMultimediale implements IsRiproducibile {
+public class Filmato extends Audio{
 
-    private int volume;
-    private int durata;
     private int luminosità;
 
-    public Filmato(int volume, int durata, int luminosità, String titolo) {
-        super(titolo);
-        this.volume = volume;
-        this.durata = durata;
+    public Filmato(int volume, int durata, String titolo, int luminosità) {
+        super(volume, durata, titolo);
         this.luminosità = luminosità;
     }
-
+    
     @Override
     public int getDurata() {
-        return durata;
+        return getDurata();
+    }
+    
+    @Override
+    public int getVolume() {
+        return getVolume();
     }
 
     public int getLuminosità() {
         return luminosità;
     }
     
-    @Override
-    public int getVolume() {
-        return volume;
-    }
-
-    @Override
     public void alza(int n) {
-        if ((volume + n) <= 10) {
-            volume += n;
+        if ((getVolume() + n) <= 10) {
+            getVolume() += n;
         }
     }
 
