@@ -79,11 +79,11 @@ public class Box <T> {
         //Box<Boolean> b6 = new Box<>(null);
         //System.out.println(b6); 
         
-        Persona p = new Persona("cognome", "nome");
-        Box<Persona> b5 = new Box<>(p);        
+        //Persona p = new Persona("cognome", "nome");
+        //Box<Persona> b5 = new Box<>(p);        
         
-        System.out.print(b5);       
-        System.out.println(b5.tipo()); // se non è ridefinito il metodo toString stampa Persona@7852e922        
+        //System.out.print(b5);       
+        //System.out.println(b5.tipo()); // se non è ridefinito il metodo toString stampa Persona@7852e922        
                 
         //System.out.println(Box.verificaTipo(b5));                
     }

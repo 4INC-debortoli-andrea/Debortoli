@@ -15,12 +15,12 @@ public class Main {
 
         DatoMultimediale[] d = {
             new Audio(5, 10, "A"),
-            new Filmato(2, 7, 4, "B"),
+            //new Filmato(2, 7, 4, "B"),
             new Audio(3, 1, "C"),
             new Immagine(8, "D"),
             new Immagine(4, "E")
         };
-
+        /*
         int scelta = 6;
         while (scelta != 0) {
             System.out.println(
@@ -50,5 +50,9 @@ public class Main {
                 System.out.println("Scelta non valida\n");
             }
         }
+        */
+        
+        Immagine i = (Immagine) d[1];
+        System.out.println(i.mostra());
     }
 }

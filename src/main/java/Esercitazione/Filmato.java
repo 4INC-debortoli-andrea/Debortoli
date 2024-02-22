@@ -1,10 +1,12 @@
+
 package Esercitazione;
 
 /**
  *
  * @author andry
  */
-public class Filmato extends Audio{
+
+/*public class Filmato extends Audio{
 
     private int luminosità;
 
@@ -83,4 +85,5 @@ public class Filmato extends Audio{
         return super.toString() + "\nvolume = " + volume + "\ndurata = " + durata + "\nluminosità = " + luminosità;
     }
 }
+*/
 
